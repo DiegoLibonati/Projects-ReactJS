@@ -3,7 +3,7 @@ import { CardTour } from "./CardTour";
 import { useFetchTour } from "../hooks/useFetchTour";
 
 export const Main = () => {
-  const { information, setInformation } = useFetchTour();
+  const { information, setInformation, loading } = useFetchTour();
 
   return (
     <>
@@ -16,14 +16,19 @@ export const Main = () => {
         </section>
 
         <section className="cards_container">
-          {information.map((tour) => (
-            <CardTour
-              key={tour.id}
-              {...tour}
-              information={information}
-              setInformation={setInformation}
-            ></CardTour>
-          ))}
+          {loading ? (
+            <div className="spinner"></div>
+          ) : (
+            information.map((tour) => (
+              <CardTour
+                key={tour.id}
+                {...tour}
+                information={information}
+                setInformation={setInformation}
+                loading={loading}
+              ></CardTour>
+            ))
+          )}
         </section>
       </main>
     </>
