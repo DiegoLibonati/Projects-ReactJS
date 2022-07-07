@@ -30,7 +30,7 @@ export const CardTour = ({
         information.splice(i, 1);
       }
     }
-    console.log(information);
+
     return setInformation([...information]);
   };
 

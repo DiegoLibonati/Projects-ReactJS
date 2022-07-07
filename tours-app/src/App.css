@@ -42,6 +42,16 @@ body {
   font-size: 2rem;
 }
 
+.title_container_article button {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  color: #fff;
+  background-color: #09f;
+  cursor: pointer;
+}
+
 .title_container_article div {
   align-self: center;
   background-color: #77a6b6;
