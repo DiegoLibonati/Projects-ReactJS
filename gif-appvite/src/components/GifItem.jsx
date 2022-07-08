@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const GifItem = ({
   title,
   url,
@@ -46,3 +48,20 @@ export const GifItem = ({
     </div>
   );
 };
+
+GifItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  avatarName: PropTypes.string.isRequired,
+  avatarDescription: PropTypes.string.isRequired,
+  avatarProfileUrl: PropTypes.string.isRequired,
+  gifDownload: PropTypes.string.isRequired,
+  setShowImg: PropTypes.func.isRequired,
+};
+
+/* GifItem.defaultProps = {
+  // Si no se le pasa nada a las props, se cargan esto de forma default
+  title: "Gif",
+  url: "...",
+}; */
