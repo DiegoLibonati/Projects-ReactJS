@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { InputsForm } from "./InputsForm";
 
 export const AddCategory = ({ addCategory, howManyGif, howManyGifs }) => {
@@ -47,4 +48,8 @@ export const AddCategory = ({ addCategory, howManyGif, howManyGifs }) => {
       </form>
     </article>
   );
+};
+
+AddCategory.propType = {
+  addCategory: PropTypes.func.isRequired,
 };
