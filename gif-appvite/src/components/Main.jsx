@@ -40,7 +40,6 @@ export const Main = () => {
     showImgContainer.style.display = "None";
     document.body.style.overflow = "auto";
   };
-
   return (
     <>
       <main>
@@ -84,6 +83,8 @@ export const Main = () => {
           </article>
         </section>
       </main>
+
+      <p data-testid="testcategories">{categories.length}</p>
     </>
   );
 };
