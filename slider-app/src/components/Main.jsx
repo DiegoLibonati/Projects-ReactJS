@@ -18,11 +18,11 @@ export const Main = () => {
   };
 
   useEffect(() => {
-    if (index <= 0) {
+    if (index < 0) {
       setIndex(person.length - 1);
     }
 
-    if (index >= person.length - 1) {
+    if (index > person.length - 1) {
       setIndex(0);
     }
   }, [index, person]);
