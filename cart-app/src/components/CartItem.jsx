@@ -1,6 +1,9 @@
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { useGlobalContext } from "../helpers/context";
 
-export const CartItem = ({ title, price, img, amount }) => {
+export const CartItem = ({ id, title, price, img, amount }) => {
+  const { clearItem, increaseItem, decreaseItem } = useGlobalContext();
+
   return (
     <div className="cart_item">
       <div className="cart_item_img">
@@ -10,13 +13,21 @@ export const CartItem = ({ title, price, img, amount }) => {
       <div className="cart_item_information">
         <h3>{title}</h3>
         <p>${price}</p>
-        <button type="button">Remove</button>
+        <button type="button" onClick={() => clearItem(id)}>
+          Remove
+        </button>
       </div>
 
       <div className="cart_item_amount">
-        <BsChevronUp id="cart-up"></BsChevronUp>
+        <BsChevronUp
+          id="cart-up"
+          onClick={() => increaseItem(id)}
+        ></BsChevronUp>
         <p>{amount}</p>
-        <BsChevronDown id="cart-down"></BsChevronDown>
+        <BsChevronDown
+          id="cart-down"
+          onClick={() => decreaseItem(id)}
+        ></BsChevronDown>
       </div>
     </div>
   );
