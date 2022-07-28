@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGlobalContext } from "../helpers/context";
 import { useFetch } from "../hooks/useFetch";
 import "../styles/Search.css";
 import "../styles/CocktailList.css";
 import { CocktailItem } from "../components/CocktailItem";
 import { Loading } from "../components/Loading";
+import { useRef } from "react";
 
 export const Home = () => {
   const { inputSearch, setInputSearch } = useGlobalContext();
@@ -12,6 +13,8 @@ export const Home = () => {
   const { loading, items } = useFetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputSearch}`
   );
+
+  const cocktailList = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,8 +40,12 @@ export const Home = () => {
 
         {loading ? (
           <Loading></Loading>
+        ) : items.length === 0 ? (
+          <h2 className="h2_notext">
+            There is not exists a cocktail with the name of {inputSearch}
+          </h2>
         ) : (
-          <section className="cocktail_list">
+          <section ref={cocktailList} className="cocktail_list">
             {items.map((item) => {
               return <CocktailItem key={item.id} {...item}></CocktailItem>;
             })}
